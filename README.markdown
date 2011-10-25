@@ -1,8 +1,29 @@
-= mongoid-app_settings
+# mongoid-app_settings
 
-Description goes here.
+## Usage
 
-== Contributing to mongoid-app_settings
+Simply create some class and include `Mongoid::AppSettings`.
+
+    class MySettings
+      include Mongoid::AppSettings
+      
+      default :enable_my_feature, true
+    end
+
+Then you can do things like:
+
+    MySettings.enable_my_feature 
+    => true
+    
+    MySettings.enable_my_feature = false
+    MySettings.enable_my_feature
+    => false
+
+    MySettings.something_else = "FooBar"
+    MySettings.something_else
+    => "FooBar"
+
+# Contributing to mongoid-app_settings
  
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet
 * Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it

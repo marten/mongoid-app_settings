@@ -4,7 +4,6 @@ require 'rspec'
 require 'database_cleaner'
 require 'mongoid'
 require 'mongoid-app_settings'
-require 'models/settings'
 
 Mongoid.configure do |config|
   name = "mongoid-app_settings_test"

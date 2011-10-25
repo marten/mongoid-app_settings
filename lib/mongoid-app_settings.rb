@@ -7,6 +7,7 @@ module Mongoid
     class Record
       include Mongoid::Document
       identity type: String
+      store_in :settings
     end
 
     module ClassMethods

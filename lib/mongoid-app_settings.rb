@@ -6,7 +6,7 @@ module Mongoid
 
     class Record #:nodoc:
       include Mongoid::Document
-      identity type: String
+      identity :type => String
       store_in :settings
     end
 
@@ -52,7 +52,7 @@ module Mongoid
 
       def record # :nodoc:
         return @record if @record
-        @record = Record.find_or_create_by(id: "settings")
+        @record = Record.find_or_create_by(:id => "settings")
       end
 
       def [](name) # :nodoc:

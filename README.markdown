@@ -1,5 +1,7 @@
 # mongoid-app_settings
 
+[![Build Status](https://secure.travis-ci.org/marten/mongoid-app_settings.png)](http://travis-ci.org/marten/mongoid-app_settings)
+
 ## Usage
 
 Simply create some class and include `Mongoid::AppSettings`.

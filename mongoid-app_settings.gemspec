@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "mongoid-app_settings"
-  s.version = "0.0.0"
+  s.version = "0.0.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Marten Veldthuis"]
-  s.date = "2011-10-25"
+  s.date = "2011-10-26"
   s.description = "Mongoid::AppSettings allows you to store settings in MongoDB, and access them easily"
   s.email = "marten@veldthuis.com"
   s.extra_rdoc_files = [
@@ -26,6 +26,7 @@ Gem::Specification.new do |s|
     "Rakefile",
     "VERSION",
     "lib/mongoid-app_settings.rb",
+    "mongoid-app_settings.gemspec",
     "spec/mongoid-app_settings_spec.rb",
     "spec/spec_helper.rb"
   ]

@@ -7,7 +7,8 @@ Simply create some class and include `Mongoid::AppSettings`.
     class MySettings
       include Mongoid::AppSettings
       
-      default :enable_my_feature, true
+      setting :enable_my_feature, default: true
+      setting :something_else
     end
 
 Then you can do things like:

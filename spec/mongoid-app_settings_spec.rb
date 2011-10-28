@@ -32,6 +32,19 @@ describe "Mongoid::AppSettings" do
     settings.foo.should == "bar"
   end
 
+  it "should be possible to use defaults of other settings in defaults" do
+    settings.instance_eval { setting :foo, :default => "bar"
+                             setting :baz, :default => "#{foo} quux" }
+    settings.baz.should == "bar quux"
+  end
+
+  it "should be possible to use values of other settings in defaults" do
+    settings.instance_eval { setting :foo, :default => "bar" }
+    settings.foo = "baz"
+    settings.instance_eval { setting :qux, :default => "#{foo} quux" }
+    settings.qux.should === "baz quux"
+  end
+
   it "should be possible to overwrite a default value" do
     settings.instance_eval { setting :foo, :default => "bar" }
     settings.foo = "baz"

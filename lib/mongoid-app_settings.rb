@@ -4,6 +4,10 @@ module Mongoid
   module AppSettings
     extend ActiveSupport::Concern
 
+    included do |base|
+      @base = base
+    end
+
     class Record #:nodoc:
       include Mongoid::Document
       identity :type => String
@@ -23,6 +27,16 @@ module Mongoid
       #   end
       def setting(name, options = {})
         settings[name.to_s] = options
+
+        @base.class.class_eval do
+          define_method(name.to_s) do
+            @base[name.to_s]
+          end
+
+          define_method(name.to_s + "=") do |value|
+            @base[name.to_s] = value
+          end
+        end
       end
       
       # Force a reload from the database
@@ -31,16 +45,6 @@ module Mongoid
       end
 
       protected
-
-      def method_missing(name, *args, &block) # :nodoc:
-        if name.to_s =~ /^(.*)=$/ and setting_defined?($1)
-          self[$1] = args[0]
-        elsif setting_defined?(name.to_s)
-          self[name.to_s]
-        else
-          super
-        end
-      end
 
       def settings # :nodoc:
         @settings ||= {}

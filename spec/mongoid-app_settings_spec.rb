@@ -51,6 +51,20 @@ describe "Mongoid::AppSettings" do
     settings.foo.should == "baz"
   end
 
+  it "should be possible to overwrite a value with something else" do
+    settings.instance_eval { setting :foo, :default => "bar" }
+    settings.foo = "baz"
+    settings.foo = "quux"
+    settings.foo.should == "quux"
+  end
+
+  it "should be possible to overwrite a value with something falsey" do
+    settings.instance_eval { setting :foo, :default => "bar" }
+    settings.foo = "baz"
+    settings.foo = false
+    settings.foo.should == false
+  end
+
   it "should not constantly reload" do
     settings.instance_eval { setting :foo }
     other_settings.instance_eval { setting :foo }

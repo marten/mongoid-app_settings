@@ -19,6 +19,13 @@ describe "Mongoid::AppSettings" do
     settings.something.should == "some nice value"
   end
 
+  it "should define fields on the record" do
+    settings.instance_eval { setting :something }
+    expect { 
+      settings.send(:record).something 
+    }.not_to raise_error(NoMethodError)
+  end
+
   it "should save settings outside of itself" do
     settings.instance_eval { setting :something }
     other_settings.instance_eval { setting :something }

@@ -28,6 +28,10 @@ module Mongoid
       def setting(name, options = {})
         settings[name.to_s] = options
 
+        Record.instance_eval do
+          field name
+        end
+
         @base.class.class_eval do
           define_method(name.to_s) do
             @base[name.to_s]

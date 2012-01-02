@@ -61,6 +61,14 @@ module Mongoid
         end
       end
 
+      def defaults
+        {}.tap do |result|
+          settings.each do |setting, options|
+            result[setting.to_sym] = options[:default]
+          end
+        end
+      end
+
       protected
 
       def settings # :nodoc:

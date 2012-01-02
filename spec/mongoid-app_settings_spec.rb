@@ -90,6 +90,16 @@ describe "Mongoid::AppSettings" do
       settings.all.should == {:one => "One", :two => "My value", :three => nil}
     end
 
+    it "should be possible to get a hash of all settings and their defaults" do
+      settings.instance_eval { setting :one, :default => "One" }
+      settings.instance_eval { setting :two, :default => "Two" }
+      settings.instance_eval { setting :three}
+
+      settings.two = "My value"
+      settings.three = nil
+      settings.defaults.should == {:one => "One", :two => "Two", :three => nil}
+    end
+
     it "should be possible to overwrite a value with false" do
       # At one point, Mongoid didn't support Record#set with nil/false
       # This spec is here to prevent regression

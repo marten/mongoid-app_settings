@@ -48,6 +48,11 @@ module Mongoid
         @record = nil
       end
 
+      # Unsets a set value, resetting it to its default
+      def delete(setting)
+        @record.unset(setting)
+      end
+
       protected
 
       def settings # :nodoc:

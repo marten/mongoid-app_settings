@@ -83,8 +83,11 @@ describe "Mongoid::AppSettings" do
     it "should be possible to overwrite a value with false" do
       # At one point, Mongoid didn't support Record#set with nil/false
       # This spec is here to prevent regression
-  it "should be possible to overwrite a value with something else" do
-    settings.instance_eval { setting :foo, :default => "bar" }
+      settings.instance_eval { setting :foo, :default => "bar" }
+      settings.foo = "baz"
+      settings.foo = false
+      settings.foo.should == false
+    end
 
     it "should be possible to overwrite a value with false" do
       # At one point, Mongoid didn't support Record#set with nil/false

@@ -1,6 +1,14 @@
-# mongoid-app_settings
+# mongoid-app\_settings
 
-[![Build Status](https://secure.travis-ci.org/marten/mongoid-app_settings.png)](http://travis-ci.org/marten/mongoid-app_settings)
+[![Build Status](https://secure.travis-ci.org/marten/mongoid-app_settings.png)](http://travis-ci.org/marten/mongoid-app\_settings)
+
+This is a fairly simple gem to let you work with application configuration
+that's stored in Mongoid. It's inspired by a similar project called
+[rails-settings](https://github.com/ledermann/rails-settings), except this
+stores it in MongoDB using Mongoid.
+
+It's a little more explicit in that it requires you to define a list of 
+settings beforehand.
 
 ## Usage
 
@@ -26,7 +34,23 @@ Then you can do things like:
     MySettings.something_else
     => "FooBar"
 
-# Contributing to mongoid-app_settings
+You can unset a value (reverting it to the default if given):
+
+    MySettings.reset(:enable_my_feature)
+    MySettings.enable_my_feature
+    => true
+
+You can get a list of all values:
+
+    MySettings.all
+    => {:enable_my_feature => true, :something_else => "FooBar"}
+
+You can get a list of defaults:
+
+    MySettings.defaults
+    => {:enable_my_feature => true, :something_else => nil}
+
+# Contributing to mongoid-app\_settings
  
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet
 * Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it

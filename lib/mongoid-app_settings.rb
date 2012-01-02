@@ -53,6 +53,14 @@ module Mongoid
         @record.unset(setting)
       end
 
+      def all
+        {}.tap do |result|
+          settings.each do |setting, options|
+            result[setting.to_sym] = self.send(setting)
+          end
+        end
+      end
+
       protected
 
       def settings # :nodoc:

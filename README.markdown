@@ -49,6 +49,17 @@ You can get a list of defaults:
 
     MySettings.defaults
     => {:enable_my_feature => true, :something_else => nil}
+    
+Settings are cached until manually reloaded. In your ApplicationController, you
+might want to do something like
+
+    class ApplicationController < ActionController::Base
+      before_filter :reload_settings
+      
+      def reload_settings
+        Settings.reload
+      end
+    end
 
 # Contributing to mongoid-app\_settings
  

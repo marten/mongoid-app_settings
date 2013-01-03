@@ -10,8 +10,8 @@ module Mongoid
 
     class Record #:nodoc:
       include Mongoid::Document
-      identity :type => String
-      store_in :settings
+      field :key, :type => String
+      store_in :collection => :settings
     end
 
     module ClassMethods
@@ -81,7 +81,7 @@ module Mongoid
 
       def record # :nodoc:
         return @record if @record
-        @record = Record.find_or_create_by(:id => "settings")
+        @record = Record.find_or_create_by(:key => "settings")
       end
 
       def [](name) # :nodoc:

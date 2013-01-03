@@ -5,12 +5,8 @@ require 'database_cleaner'
 require 'mongoid'
 require 'mongoid-app_settings'
 
-Mongoid.configure do |config|
-  name = "mongoid-app_settings_test"
-  host = "localhost"
-  config.master = Mongo::Connection.new.db(name)
-  config.autocreate_indexes = true
-end
+ENV["MONGOID_ENV"] = "test"
+Mongoid.load!("#{File.dirname(__FILE__)}/mongoid3.yml")
 
 # Requires supporting files with custom matchers and macros, etc,
 # in ./support/ and its subdirectories.

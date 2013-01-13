@@ -61,6 +61,11 @@ might want to do something like
       end
     end
 
+# Changelog
+
+* 1.0 - Feature complete and stable. Until I need more features, that is.
+* 1.1 - Add support for Mongoid 3. Mongoid 2 is still supported.
+
 # Contributing to mongoid-app\_settings
  
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet

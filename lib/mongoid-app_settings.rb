@@ -11,7 +11,11 @@ module Mongoid
     class Record #:nodoc:
       include Mongoid::Document
       field :key, :type => String
-      store_in :collection => :settings
+      if Mongoid::VERSION > '3'
+        store_in :collection => :settings
+      else
+        store_in 'settings'
+      end
     end
 
     module ClassMethods

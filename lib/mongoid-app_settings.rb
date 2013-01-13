@@ -1,4 +1,5 @@
 require 'mongoid'
+require 'mongoid/app_settings/version'
 
 module Mongoid
   module AppSettings

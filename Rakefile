@@ -2,6 +2,8 @@
 
 require 'rubygems'
 require 'bundler'
+require 'bundler/gem_tasks'
+
 begin
   Bundler.setup(:default, :development)
 rescue Bundler::BundlerError => e
@@ -11,20 +13,6 @@ rescue Bundler::BundlerError => e
 end
 require 'rake'
 require 'appraisal'
-
-require 'jeweler'
-Jeweler::Tasks.new do |gem|
-  # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
-  gem.name = "mongoid-app_settings"
-  gem.homepage = "http://github.com/marten/mongoid-app_settings"
-  gem.license = "MIT"
-  gem.summary = %Q{Store settings for your application in MongoDB}
-  gem.description = %Q{Mongoid::AppSettings allows you to store settings in MongoDB, and access them easily}
-  gem.email = "marten@veldthuis.com"
-  gem.authors = ["Marten Veldthuis"]
-  # dependencies defined in Gemfile
-end
-Jeweler::RubygemsDotOrgTasks.new
 
 require 'rspec/core'
 require 'rspec/core/rake_task'
@@ -39,12 +27,3 @@ end
 
 task :default => :spec
 
-require 'rdoc/task'
-Rake::RDocTask.new do |rdoc|
-  version = File.exist?('VERSION') ? File.read('VERSION') : ""
-
-  rdoc.rdoc_dir = 'rdoc'
-  rdoc.title = "mongoid-app_settings #{version}"
-  rdoc.rdoc_files.include('README*')
-  rdoc.rdoc_files.include('lib/**/*.rb')
-end

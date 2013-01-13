@@ -1,6 +1,6 @@
 appraise "mongoid2" do
   gem "mongoid", "~> 2.0"
-  gem 'bson_ext'
+  gem 'bson_ext', :platforms => [:mri]
 end
 
 appraise "mongoid3" do

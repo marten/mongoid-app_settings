@@ -36,7 +36,7 @@ Then you can do things like:
 
 You can unset a value (reverting it to the default if given):
 
-    MySettings.reset(:enable_my_feature)
+    MySettings.delete(:enable_my_feature)
     MySettings.enable_my_feature
     => true
 

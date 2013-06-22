@@ -2,7 +2,7 @@ require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 
 describe "Mongoid::AppSettings" do
   let(:settings) do
-    settings = Class.new 
+    settings = Class.new
     settings.instance_eval { include Mongoid::AppSettings }
     settings
   end
@@ -39,14 +39,14 @@ describe "Mongoid::AppSettings" do
 
     it "should define fields on the record" do
       settings.instance_eval { setting :something }
-      expect { 
-        settings.send(:record).something 
+      expect {
+        settings.send(:record).something
       }.not_to raise_error(NoMethodError)
     end
   end
 
   describe "setting values" do
-    it "should be possible to save a setting" do 
+    it "should be possible to save a setting" do
       settings.instance_eval { setting :something }
       settings.something = "some nice value"
       settings.something.should == "some nice value"

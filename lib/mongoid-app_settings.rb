@@ -47,7 +47,7 @@ module Mongoid
           end
         end
       end
-      
+
       # Force a reload from the database
       def reload
         @record = nil
@@ -99,8 +99,12 @@ module Mongoid
 
       def []=(name, value) # :nodoc:
         if value
-          record.set(name, value)
-        else 
+          if Mongoid::VERSION > '4'
+            record.set(name => value)
+          else
+            record.set(name, value)
+          end
+        else
           # FIXME Mongoid's #set doesn't work for false/nil.
           # Pull request has been submitted, but until then
           # this workaround is needed.

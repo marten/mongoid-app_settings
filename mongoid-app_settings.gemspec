@@ -24,5 +24,6 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency('database_cleaner', ["~> 0.9"])
   gem.add_development_dependency('rspec', ["~> 2.11"])
   gem.add_development_dependency('appraisal')
+  gem.add_development_dependency('pry')
 end
 

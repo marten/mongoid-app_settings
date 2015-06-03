@@ -51,6 +51,7 @@ module Mongoid
       # Force a reload from the database
       def reload
         @record = nil
+        self
       end
 
       # Unsets a set value, resetting it to its default

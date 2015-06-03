@@ -138,5 +138,14 @@ describe "Mongoid::AppSettings" do
       other_settings.reload
       other_settings.foo.should == "bar"
     end
+
+    it 'returns self to allow chaining setting lookup' do
+      settings.instance_eval { setting :foo }
+      other_settings.instance_eval { setting :foo }
+      other_settings.foo # force other_settings to load the record
+
+      settings.foo = "bar"
+      other_settings.reload.foo.should == "bar"
+    end
   end
 end

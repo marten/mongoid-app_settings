@@ -1,7 +1,7 @@
 PATH
   remote: ../
   specs:
-    mongoid-app_settings (1.2.0)
+    mongoid-app_settings (1.3.0)
       activesupport
       mongoid (>= 2.0)
 
@@ -60,3 +60,6 @@ DEPENDENCIES
   mongoid-app_settings!
   pry
   rspec (~> 2.11)
+
+BUNDLED WITH
+   1.10.4

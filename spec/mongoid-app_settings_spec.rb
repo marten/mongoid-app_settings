@@ -117,6 +117,12 @@ describe "Mongoid::AppSettings" do
       settings.foo = nil
       settings.foo.should == nil
     end
+
+    it 'converts types' do
+      settings.instance_eval { setting :foo, :type => Integer, :default => 42 }
+      settings.foo = "37"
+      settings.foo.should == 37
+    end
   end
 
   describe "reload behaviour" do

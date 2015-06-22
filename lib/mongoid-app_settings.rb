@@ -34,7 +34,7 @@ module Mongoid
         settings[name.to_s] = options
 
         Record.instance_eval do
-          field name
+          field name, options.slice(:type)
         end
 
         @base.class.class_eval do

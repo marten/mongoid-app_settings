@@ -18,7 +18,7 @@ Simply create some class and include `Mongoid::AppSettings`.
       include Mongoid::AppSettings
 
       setting :enable_my_feature, default: true
-      setting :something_else
+      setting :something_else, type: Integer
     end
 
 Then you can do things like:
@@ -30,9 +30,9 @@ Then you can do things like:
     MySettings.enable_my_feature
     => false
 
-    MySettings.something_else = "FooBar"
+    MySettings.something_else = "42"
     MySettings.something_else
-    => "FooBar"
+    => "42"
 
 You can unset a value (reverting it to the default if given):
 
@@ -43,7 +43,7 @@ You can unset a value (reverting it to the default if given):
 You can get a list of all values:
 
     MySettings.all
-    => {:enable_my_feature => true, :something_else => "FooBar"}
+    => {:enable_my_feature => true, :something_else => "42"}
 
 You can get a list of defaults:
 
@@ -63,6 +63,7 @@ might want to do something like
 
 # Changelog
 
+* 1.3.0 - Added support for converting to proper types, using Mongoid's conversion.
 * 1.2.0 - Added chaining behaviour for reload: `AppSettings.reload.some_setting` is now possible.
 * 1.1.1 - Add support for Mongoid 4 (available in git). Still supports Mongoid 2 and 3.
 * 1.1 - Add support for Mongoid 3. Mongoid 2 is still supported.
